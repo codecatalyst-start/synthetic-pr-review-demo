@@ -1,0 +1,37 @@
+ isValid: errors.length === 0,
+    validationErrors: errors,
+    prNumber,
+    title,
+    body,
+    author,
+    baseBranch,
+    headBranch,
+    diffUrl,
+    htmlUrl,
+    changedFiles,
+    additions,
+    deletions,
+    action
+	
+	
+	isValid: errors.length === 0,
+    validationErrors: errors,
+    prNumber,
+    title,
+    body,
+    author,
+    owner,
+    repository,
+    baseBranch,
+    headBranch,
+    draft,
+    diffUrl,
+    htmlUrl,
+    changedFiles,
+    additions,
+    deletions,
+    action
+	
+	
+	GIT Token:
+	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

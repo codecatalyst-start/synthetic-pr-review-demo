@@ -1,0 +1,66 @@
+Slide 1 – Introduction (30 seconds)
+
+Hello everyone,
+
+My name is Sheetal Savagaonkar, and today I'll be presenting CodeCatalyst, an AI-assisted Pull Request Review solution built using GitHub, n8n, OpenAI, Discord, Grafana, and the n8n Data Table.
+
+The goal of this project is to automate the pull request review process by validating pull requests, performing basic static checks, generating AI-based review feedback, logging workflow events, and notifying the engineering team automatically.
+
+Slide 2 – Problem Statement (30 seconds)
+
+In many development teams, pull request reviews are still largely manual.
+
+Developers spend time checking PR metadata, reviewing code, identifying common issues, and communicating feedback. This process can be slow, inconsistent, and difficult to monitor.
+
+To improve this, I built an automated workflow that performs these activities consistently and provides better visibility into the review process.
+
+Slide 3 – Solution Overview (40 seconds)
+
+Whenever a Pull Request is created in GitHub, the GitHub Trigger starts the Main Orchestrator workflow.
+
+The Main Orchestrator coordinates four child workflows:
+
+Validate PR
+Static Check
+AI Review
+Notify & Log
+
+Each workflow performs a specific task, making the overall solution modular, reusable, and easy to maintain.
+
+Slide 4 – Workflow Execution (1 minute 30 seconds)
+
+The first workflow, Validate PR, extracts and validates important pull request information such as repository name, author, title, and branch details. If mandatory information is missing, the workflow stops further processing.
+
+If validation succeeds, the Static Check workflow performs lightweight heuristic checks. It looks for large pull requests, excessive code changes, and TODO or FIXME markers in the description.
+
+If the pull request passes these checks, it is sent to the AI Review workflow.
+
+The AI Review workflow sends the pull request details to the OpenAI model, which generates a structured response containing a summary, risk level, strengths, concerns, and suggested next steps.
+
+Finally, the Notify & Log workflow records the event in the pr_events table and sends a formatted notification to Discord. Grafana can then use these logged events for visualization and monitoring.
+
+Slide 5 – Benefits (50 seconds)
+
+This solution provides several benefits.
+
+It reduces manual effort by automating pull request validation and review.
+
+Its modular workflow design makes individual components reusable and easier to maintain.
+
+AI-generated feedback provides a consistent review format.
+
+Event logging creates an audit trail, while Discord notifications and Grafana dashboards improve visibility into the review process.
+
+Slide 6 – Future Enhancements (20 seconds)
+
+In the future, this solution can be extended by integrating tools such as SonarQube for deeper static analysis, Jira for issue tracking, and enhanced Grafana dashboards for richer reporting.
+
+These enhancements are planned and are not part of the current implementation.
+
+Slide 7 – Conclusion (30 seconds)
+
+To conclude, CodeCatalyst demonstrates how workflow automation and AI can streamline the pull request review process.
+
+By combining GitHub, n8n, OpenAI, Discord, and Grafana, the solution automates repetitive review tasks, provides structured AI feedback, and improves engineering visibility through centralized logging and notifications.
+
+Thank you for your time. I would be happy to answer any questions.
